@@ -23,12 +23,16 @@ export const SolContent = () => {
             console.log('签名消息:', signedMessage)
             alert('消息签名成功！')
         } catch (error) {
-          
+            console.log(error);
         }
     }
 
     // 签名单个交易
     const handleSignTransaction = async () => {
+        if(!connection || !address){
+            alert('Please connect wallet first!')
+            return
+        }
         try {
             const transaction = new Transaction().add(
                 SystemProgram.transfer({
@@ -48,12 +52,16 @@ export const SolContent = () => {
             await connection.confirmTransaction(signature)
             alert(`交易成功！交易签名: ${signature}`)
         } catch (error) {
-        
+
         }
     }
 
     // 签名并直接发送交易
     const handleSignAndSendTransaction = async () => {
+        if(!connection || !address){
+            alert('Please connect wallet first!')
+            return
+        }
         try {
             const transaction = new Transaction().add(
                 SystemProgram.transfer({
@@ -70,7 +78,7 @@ export const SolContent = () => {
             await connection.confirmTransaction(signature)
             alert(`交易成功！交易签名: ${signature}`)
         } catch (error) {
-        
+            console.log(error);
         }
     }
 
@@ -112,12 +120,13 @@ export const SolContent = () => {
 
             alert(`所有交易发送成功！`)
         } catch (error) {
-    
+            console.log(error);
         }
     }
 
     return (
         <div className="p-4">
+             {/*@ts-expect-error expected*/}
             <appkit-button/>
             <div className="mb-4">
                 <input
