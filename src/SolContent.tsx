@@ -74,6 +74,14 @@ export const SolContent = () => {
             console.log('blockhash:', blockhash);
             transaction.recentBlockhash = blockhash
             transaction.feePayer = new PublicKey(address)
+            const buffer = Buffer.from(
+                transaction.serialize({
+                    requireAllSignatures: false,
+                }),
+            )
+            const base64Encoded = buffer.toString('base64')
+            console.log('base64Encoded:',base64Encoded);
+
             const signature = await walletProvider.signAndSendTransaction(transaction)
             await connection.confirmTransaction(signature)
             alert(`交易成功！交易签名: ${signature}`)
