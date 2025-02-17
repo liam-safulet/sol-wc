@@ -154,16 +154,16 @@ export const SolContent = () => {
 
             <div className="space-x-2">
                 <button onClick={handleSignMessage} className="bg-blue-500 text-white px-4 py-2 rounded">
-                    签名消息
+                    signMessage
                 </button>
                 <button onClick={handleSignTransaction} className="bg-blue-500 text-white px-4 py-2 rounded">
-                    签名交易
+                    signTransaction
                 </button>
                 <button onClick={handleSignAndSendTransaction} className="bg-blue-500 text-white px-4 py-2 rounded">
-                    签名并发送交易
+                    signAndSendTransaction
                 </button>
                 <button onClick={handleSignAllTransactions} className="bg-blue-500 text-white px-4 py-2 rounded">
-                    签名多个交易
+                    SignAllTransactions
                 </button>
             </div>
         </div>
